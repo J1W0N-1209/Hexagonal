@@ -26,10 +26,10 @@ public class BankAccountService implements DepositUseCase, WithdrawUseCase {
     }
 
     @Override
-    public boolean withdraw(Long id, BigDecimal account) {
+    public boolean withdraw(Long id, BigDecimal amount) {
         BankAccount account = loadAccountPort.load(id);
 
-        boolean hasWithdrawn = account.withdraw(account);
+        boolean hasWithdrawn = account.withdraw(amount);
 
         if(hasWithdrawn) {
             saveAccountPort.save(account);
